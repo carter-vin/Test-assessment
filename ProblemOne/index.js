@@ -83,7 +83,10 @@ function mutateArray(a = []) {
     }
   }
 
-  return flattenedArray;
+    // 3. Now update the `mutateArray` function so that the resulting array only includes objects with a guest_type of 'guest'.
+    const filteredItems = flattenedArray.filter(i => i.guest_type === 'guest');
+
+  return filteredItems;
 }
 
 $(document).ready(function () {
