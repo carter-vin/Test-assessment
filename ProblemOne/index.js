@@ -83,10 +83,14 @@ function mutateArray(a = []) {
     }
   }
 
-    // 3. Now update the `mutateArray` function so that the resulting array only includes objects with a guest_type of 'guest'.
-    const filteredItems = flattenedArray.filter(i => i.guest_type === 'guest');
+  // 3. Now update the `mutateArray` function so that the resulting array only includes objects with a guest_type of 'guest'.
+  const filteredItems = flattenedArray.filter(i => i.guest_type === 'guest');
 
-  return filteredItems;
+  // 4. Finally, update the `mutateArray` function so the resulting array is ordered alphabetically by last and first name.
+  const compareFn = (a, b) => a.last_name - b.last_name
+  const sortedArray = filteredItems.sort(compareFn);
+
+  return sortedArray;
 }
 
 $(document).ready(function () {
