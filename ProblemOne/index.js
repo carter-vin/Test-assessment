@@ -75,6 +75,14 @@ function mutateArray(a = []) {
   // 1. Update the `mutateArray` function to return `a` as a flattened array, so that each item is changed to
   const flattenedArray = a.map(i => doFlatten(i));
 
+  // 2. Now update the `mutateArray` function so that the 'some_array' attribute in each item of the mutated array is changed to the sum of the array called 'some_total'
+  for (const item of flattenedArray) {
+    if (item !== null && Array.isArray(item.some_array)) {
+      item.some_total = item.some_array.reduce((prevVal, curVal) => prevVal + curVal, 0)
+      delete item.some_array
+    }
+  }
+
   return flattenedArray;
 }
 
